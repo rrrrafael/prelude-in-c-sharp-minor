@@ -1,23 +1,9 @@
 using System;
 
-namespace BMI
+namespace PRR01
 {
-    // Vi har klassen Person som kommer att innehålla metoder för att räkna BMI och BMR.
-    class Person
+    public static class CustomTools
     {
-        // Variabler som vi kommer att använda i klassen.
-        private double height;
-        private double weight;
-        private double bmi;
-
-        // Initializator för klassen BMI
-        public Person(double height, double weight)
-        {
-            this.height = height;
-            this.weight = weight;
-        }
-
-        // Avsluta programmet med errCode tal
         public static void Die(short errCode)
         {
             string error = "Fel inmatning\nExit";
@@ -25,38 +11,62 @@ namespace BMI
 
             Environment.Exit(errCode);
         }
-        
-        public void printBmr() {
-            // TODO
+        public static bool TryReadBool()
+		{
+            string? read = Console.ReadLine();
+            read.ToLower();
+
+			if (read[0] == 'm')
+				return 0;
+			else if (read[0] == 'k')
+				return 1;
+		} 
+
+		public static double TryReadDouble()
+		{
+			if (!double.TryParse(Console.ReadLine(), out double read))
+				return 0;
+			else
+				return read;
+		} 
+
+        public static double TryReadInt()
+		{
+			if (!int.TryParse(Console.ReadLine(), out double read))
+				return 0;
+			else
+				return read;
+		}      
+    }
+    class User
+    {
+        private double height;
+        private double weight;
+        private double bmi;
+        private double bmr;
+        private int    age;
+        private bool   gender;
+
+        public User(double height, double weight, int age, bool gender)
+        {
+            this.height = height;
+            this.weight = weight;
+            this.age    = age;
+            this.gender = gender;
         }
 
-        public void printBmi()
+        public double GetBmi()
         {
-            // Få metoden Console.Writeline att bete sig som C-funktionen
-            // printf med den här format string
-            // {0:0.00} kommer att ersättas med bmi variabeln formaterad med
-            // endast två decimaler.
-            // {1} kommer att ersättas med append string
-            string outputFormatString = "Din BMI är {0:0.00}: du är {1}.";
+            return 1.3 * weight / Math.Pow(height, 2.5);
+        }
 
-            // Denna string kommer att läggas till i utdtata till användaren.
-            string append = "";
-
-            // Se till att de nödvändiga variablerna är initialiserade
-            // och beräkna utdata annars avslutas programmet.
+        public void PrintBmi(double bmi)
+        {
             if (height != 0 && weight != 0) {
-                // Beräkna BMI
-                bmi = 1.3 * weight / Math.Pow(height, 2.5);
-
-                // Tabell:
-                // Tabellen nedan gäller för män och kvinnor över 18 år med
-                // normal kroppsbyggnad.
-                //
-                // BMI under 18.5        undervikt
-                // BMI 18.5–25           sund och normal vikt
-                // BMI 25–30             övervikt
-                // BMI 30–40             kraftig övervikt
-                // BMI över 40           extrem övervik
+                string outputFormatString = "Din BMI är {0:0.00}: du är {1}.";
+                string append = "";
+       
+                bmi = GetBmi();
                 if (bmi < 18.5)
                     append = "undervikt";
                 else if (bmi >= 18.5 && bmi <= 25)
@@ -67,56 +77,60 @@ namespace BMI
                     append = "kraftig övervikt";
                 else if (bmi > 40)
                     append = "extremt överkvikt";
+
+                Console.WriteLine(outputFormatString, bmi, append);
             }
             else {
-                // Avslutas om det misslyckas
-                Die(1);
+                CustomTools.Die(1);
             }
+        }
 
-            // Skriv ut resultatet till användaren
-            Console.WriteLine(outputFormatString, bmi, append);
+        public void GetBmr()
+        {
+            if (gender == 1)
+                // Män
+                return 66.47 + (13.75 * weight) + (5.003 * (height*100)) - (6.755 * age);
+            else
+                // Kvinnor
+                return  655.1 + (9.563 * weight) + (1.85 * (height*100)) - (4.676 * age);
+        }
+
+        public void PrintBmr()
+        {
+            // TODO
         }
     }
-
 
     class Program
     {
-		// Försök att läsa en dubbelkonstant från användaren.
-		// Återge det lästa numret från användaren.
-		// Återge 0 om det misslyckas. 
-		private static double TryReadDouble()
-		{
-			// Uppmana användaren att ange indata.
-			// Om det inte är en double skriv ut ett felmeddelande och återge 0
-			// I annat fall initialiseras read variabeln med doublekonstant
-			if (!double.TryParse(Console.ReadLine(), out double read))
-				return 0;
-			else
-				return read;
-		}
+        private const string heightPromp  = "Ange din höjd i meter (använd kommatecken för att separera decimalvärden t.ex. 1,59): ";
+        private const string weightPrompt = "Ange din vikt i kilogram (använd kommatecken för att separera decimalvärden t.ex. 91,72): ";
+        private const string agePrompt    = "Ange din ålder: ";
+        private const string genderPrompt = "Skriv ditt kön: ";
 
-		
         static void Main()
         {
-            // Här kommer vi spara inmätningsdata.
-            double height; // höjd
-            double weight; // vikt
+            double height;
+            double weight;
+            int    age;
+            bool   gender;
 
-            // Informera användaren om programmets syfte och funktion.
             Console.WriteLine("BMI beräknare program");
 
-            // Informera användaren om att inmäta sin höjd.
-            Console.Write("Ange din höjd: ");
-            height = TryReadDouble();
+            Console.Write(heightPromp);
+            height = CustomTools.TryReadDouble();
 
-            // Informera användaren om att inmäta sin vikt.
-            Console.Write("Ange din vikt: ");
-            weight = TryReadDouble();
+            Console.Write(weightPrompt);
+            weight = CustomTools.TryReadDouble();
 
-            // Skafa en variabel person från klassen Person med inmätande data och skriva ut hans BMI värde.
-            Person person = new Person(height, weight);
-            person.printBmi();
+            Console.Write(agePrompt);
+            age    = CustomTools.TryReadInt();
+
+            Console.Write(genderPrompt);
+            gender = CustomTools.TryReadBool();
+
+            User user = new User(height, weight, age, gender);
+            user.PrintBmi();
         }
     }
-
 }

@@ -156,6 +156,7 @@
     // and lightly manages objects
     class Program
     {
+        // BEGIN output strings
         // For better code organization these varialbles hold output strings
         // These make the code more readable and easy to modify
         private const string greetingPrompt = "BMI och BMR beräknare program: version 1.0.0\nTryck på \"h\" för att få hjälp; tryck på något annat för att starta.";
@@ -172,23 +173,24 @@
 
             "Du kommer att uppmanas att ange:\n\n" +
 
-            "\tDin  höjd i meter (bara siffror);\n" +
-            "\tGiltiga värden är: 0,5 till 2,2.\n\n" +
+                    "\tDin  höjd i meter (bara siffror);\n" +
+                    "\tGiltiga värden är: 0,5 till 2,2.\n\n" +
 
-            "\tDin  vikt i kilogram (bara siffror);\n" +
-            "\tGiltiga värden är: 10 till 250.\n\n" +
+                    "\tDin  vikt i kilogram (bara siffror);\n" +
+                    "\tGiltiga värden är: 10 till 250.\n\n" +
 
-            "\tDin  ålder (bara siffror);\n" +
-            "\tGiltiga värden: 18 till 70.\n\n" +
+                    "\tDin  ålder (bara siffror);\n" +
+                    "\tGiltiga värden: 18 till 70.\n\n" +
 
-            "\tDitt kön: Giltiga värden är antingen M/m för man eller K/k för kvinna;\n" +
-            "\tDetta program fungerar inte med andra könsidentiteter ännu.\n\n" +
+                    "\tDitt kön: Giltiga värden är antingen M/m för man eller K/k för kvinna;\n" +
+                    "\tDetta program fungerar inte med andra könsidentiteter ännu.\n\n" +
 
             "Om ogiltiga värden matas in i programmet kommer det att visa ett felmeddelande och avslutas." +
             "Om värdena är giltiga skriver programmet ut på skärmen ditt BMI-värde" +
             "och vilken kategori det tillhör, följt av ditt BMR-värde.\n\n" +
 
             "Exit.";
+        // END output strings
 
         public static void Help()
         {
@@ -217,6 +219,7 @@
             // Offer option to get help or to start program.
             Console.WriteLine(greetingPrompt);
 
+            // Check whether user asked for help or not
             string? option;
             if ((option = Console.ReadLine()) == "h")
             {

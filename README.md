@@ -2,10 +2,7 @@
 
 Skriv ett program för att beräkna BMI och BMR för både män och kvinnor.
 
-Först programmet ska räkna ut **BMI-Body Mass Index**. BMI är ett mått på
-förhållandet mellan vikt och längd.  Detta mått används bland annat av WHO
-(Världshälsoorganisationen) för att definiera övervikt/fetma och ska ses
-som en riktlinje.
+Först programmet ska räkna ut **BMI-Body Mass Index**.
 
 Beräknings formel för BMI är följande:
 
@@ -24,11 +21,9 @@ BMI 25–30 | "övervikt"
 BMI 30–40 | "kraftig övervikt"
 BMI över 40 | "extrem övervikt"
 
-
-Programmet ska sedan räkna ut BMR-basal metabolic rate. BMR är det dagliga
-energibehov som behövs för att hålla en persons vitala organ i total vila.
-
-En av formlerna som används för att räkna detta är Mifflin-st Jeou equation:
+Programmet ska sedan räkna ut **BMR-basal metabolic rate**. BMR är det dagliga
+energibehov som behövs för att hålla en persons vitala organ i total vila.En
+av formlerna som används för att räkna detta är Mifflin-st Jeou equation:
 
 För män:
 
@@ -46,4 +41,4 @@ Programmet ska verifiera om inmatningen är konsekvent:
 
 Programmet ska sedan skriva ut både bmi och bmr.
 
-[^1]: Tabellen nedan gäller för män och kvinnor över 18 år med normal kroppsbyggnad. 
+[^1]: Tabellen gäller för män och kvinnor över 18 år. 

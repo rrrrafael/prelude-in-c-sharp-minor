@@ -1,6 +1,6 @@
-﻿# Uppgift BMI och BMR
+# Uppgift BMI och BMR
 
-## Skriv ett program för att beräkna BMI och BMR för både män och kvinnor.
+Skriv ett program för att beräkna BMI och BMR för både män och kvinnor.
 
 Först programmet ska räkna ut **BMI-Body Mass Index**. BMI är ett mått på
 förhållandet mellan vikt och längd.  Detta mått används bland annat av WHO
@@ -30,15 +30,16 @@ energibehov som behövs för att hålla en persons vitala organ i total vila.
 
 En av formlerna som används för att räkna detta är Mifflin-st Jeou equation:
 
-** För män:**
+För män:
 
-```BMR = 66.47 + (13.75 * weight in kg) + (5.003 × height in cm) - (6.755 * age in years)```
+```BMR = 66.47 + (13.75 * (i kg)weight) + (5.003 * (i cm)höjd) - (6.755 * år)```
 
-** För kvinnor:**
+För kvinnor:
 
-```BMR = 655.1 + (9.563 * weight in kg) + (1.85 * height in cm) - (4.676 * age in years )```
+```BMR = 655.1 + (9.563 * (i kg)weight) + (1.85 * (i cm)höjd) - (4.676 * år)```
 
-Programmet ska verifiera om inmatningen är konsekvent
+Programmet ska verifiera om inmatningen är konsekvent:
+
 - 50 [cm] ≤ lägd ≤ 220 [cm]
 - 10 [kg] ≤ vikt ≤ 250 [kg]
 - 18 [år] ≤ alder ≤ 70 [år]

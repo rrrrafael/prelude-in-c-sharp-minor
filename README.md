@@ -6,7 +6,7 @@ Först programmet ska räkna ut **BMI-Body Mass Index**.
 
 Beräknings formel för BMI är följande:
 
-```BMI = 1.3*vikt(kg)/höjd(m)2.5```
+```BMI = 1.3 * (i kg)vikt / ((i meter)höjd * 2.5)```
 
 Programmet ska också skriva ut om personen har en normal vikt eller inte
 enligt följande tabell.
@@ -35,9 +35,9 @@ För kvinnor:
 
 Programmet ska verifiera om inmatningen är konsekvent:
 
-- 50 [cm] ≤ lägd ≤ 220 [cm]
-- 10 [kg] ≤ vikt ≤ 250 [kg]
-- 18 [år] ≤ alder ≤ 70 [år]
+- 50 [cm] ≤ lägd  ≤ 220 [cm]
+- 10 [kg] ≤ vikt  ≤ 250 [kg]
+- 18 [år] ≤ alder ≤ 70  [år]
 
 Programmet ska sedan skriva ut både bmi och bmr.
 

@@ -158,7 +158,7 @@
     {
         // For better code organization these varialbles hold output strings
         // These make the code more readable and easy to modify
-        private const string greetingPrompt = "BMI och BMR beräknare program\nTryck på \"h\" för att få hjälp; tryck på något annat för att starta.";
+        private const string greetingPrompt = "BMI och BMR beräknare program: version 1.0.0\nTryck på \"h\" för att få hjälp; tryck på något annat för att starta.";
         private const string heightPromp    = "Ange din höjd i meter (t.ex. 1,59): ";
         private const string weightPrompt   = "Ange din vikt i kilogram (t.ex. 91,72): ";
         private const string agePrompt      = "Ange din ålder (mellan 18 och 70): ";

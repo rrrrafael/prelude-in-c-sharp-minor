@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace PRR01
 {
@@ -11,32 +11,44 @@ namespace PRR01
 
             Environment.Exit(errCode);
         }
-        public static bool TryReadBool()
-		{
+
+        public static int TryReadBool()
+        {
             string? read = Console.ReadLine();
-            read.ToLower();
 
-			if (read[0] == 'm')
-				return 0;
-			else if (read[0] == 'k')
-				return 1;
-		} 
+            if (read != null)
+            {
+                switch (read.ToLower()[0])
+                {
+                    case 'm':
+                        return  1;
+                    case 'k':
+                        return  0;
+                    default:
+                        return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+        }
 
-		public static double TryReadDouble()
-		{
-			if (!double.TryParse(Console.ReadLine(), out double read))
-				return 0;
-			else
-				return read;
-		} 
+        public static double TryReadDouble()
+        {
+            if (!double.TryParse(Console.ReadLine(), out double read))
+                return 0;
+            else
+                return read;
+        }
 
-        public static double TryReadInt()
-		{
-			if (!int.TryParse(Console.ReadLine(), out double read))
-				return 0;
-			else
-				return read;
-		}      
+        public static int TryReadInt()
+        {
+            if (!int.TryParse(Console.ReadLine(), out int read))
+                return 0;
+            else
+                return read;
+        }
     }
     class User
     {
@@ -45,9 +57,9 @@ namespace PRR01
         private double bmi;
         private double bmr;
         private int    age;
-        private bool   gender;
+        private int    gender;
 
-        public User(double height, double weight, int age, bool gender)
+        public User(double height, double weight, int age, int gender)
         {
             this.height = height;
             this.weight = weight;
@@ -62,11 +74,11 @@ namespace PRR01
 
         public void PrintBmi(double bmi)
         {
-            if (height != 0 && weight != 0) {
+            if (height != 0 && weight != 0)
+            {
                 string outputFormatString = "Din BMI är {0:0.00}: du är {1}.";
                 string append = "";
-       
-                bmi = GetBmi();
+
                 if (bmi < 18.5)
                     append = "undervikt";
                 else if (bmi >= 18.5 && bmi <= 25)
@@ -80,19 +92,22 @@ namespace PRR01
 
                 Console.WriteLine(outputFormatString, bmi, append);
             }
-            else {
+            else
+            {
                 CustomTools.Die(1);
             }
         }
 
-        public void GetBmr()
+        public double GetBmr()
         {
             if (gender == 1)
                 // Män
-                return 66.47 + (13.75 * weight) + (5.003 * (height*100)) - (6.755 * age);
-            else
+                return 66.47 + (13.75 * weight) + (5.003 * (height * 100)) - (6.755 * age);
+            else if (gender == 0)
                 // Kvinnor
-                return  655.1 + (9.563 * weight) + (1.85 * (height*100)) - (4.676 * age);
+                return 655.1 + (9.563 * weight) + (1.85 * (height * 100)) - (4.676 * age);
+            else
+                return -1;
         }
 
         public void PrintBmr()
@@ -103,8 +118,8 @@ namespace PRR01
 
     class Program
     {
-        private const string heightPromp  = "Ange din höjd i meter (använd kommatecken för att separera decimalvärden t.ex. 1,59): ";
-        private const string weightPrompt = "Ange din vikt i kilogram (använd kommatecken för att separera decimalvärden t.ex. 91,72): ";
+        private const string heightPromp  = "Ange din höjd i meter (t.ex. 1,59): ";
+        private const string weightPrompt = "Ange din vikt i kilogram (t.ex. 91,72): ";
         private const string agePrompt    = "Ange din ålder: ";
         private const string genderPrompt = "Skriv ditt kön: ";
 
@@ -113,7 +128,7 @@ namespace PRR01
             double height;
             double weight;
             int    age;
-            bool   gender;
+            int    gender;
 
             Console.WriteLine("BMI beräknare program");
 
@@ -130,7 +145,7 @@ namespace PRR01
             gender = CustomTools.TryReadBool();
 
             User user = new User(height, weight, age, gender);
-            user.PrintBmi();
+            user.PrintBmi(user.GetBmi());
         }
     }
 }

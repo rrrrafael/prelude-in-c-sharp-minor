@@ -145,13 +145,13 @@
         private const string weightPrompt = "Ange din vikt i kilogram (t.ex. 91,72): ";
         private const string agePrompt    = "Ange din ålder (mellan 18 och 70): ";
         private const string genderPrompt = "Skriv ditt kön ([M/m] för Man eller [K/k] för Kvinna): ";
-        private const string helpMessage  = "Du bad om hjälp.  Hjälpen skriver ut detta meddelande och avslutas.\n\n" +
+        private const string helpMessage  = "\nDu bad om hjälp. Hjälpen skriver ut detta meddelande och avslutas:\n\n" +
                                             "Programmet beräknar ditt BMI (Body Mass Index) och BMR (Basal Metabolic Rate).\n\n" +
                                             "Du kommer att uppmanas att ange ditt:\n\n" +
-                                            "Din höjd i meter (bara siffror);Giltiga värden är: 0,5 till 2,2.\n" +
-                                            "Din vikt i kilogram (bara siffror); giltiga värden är: 10 till 250.\n" +
-                                            "Din ålder (bara siffror); giltiga värden: 18 till 70.\n" +
-                                            "Ditt kön: Giltiga värden är antingen M/m för man eller K/k för kvinna;\n\n" +
+                                            "\tDin höjd i meter (bara siffror); Giltiga värden är: 0,5 till 2,2.\n" +
+                                            "\tDin vikt i kilogram (bara siffror); giltiga värden är: 10 till 250.\n" +
+                                            "\tDin ålder (bara siffror); Giltiga värden: 18 till 70.\n" +
+                                            "\tDitt kön: Giltiga värden är antingen M/m för man eller K/k för kvinna;\n\n" +
                                             "Detta program fungerar inte med andra könsidentiteter ännu.\n\n" +
                                             "Om ogiltiga värden matas in i programmet kommer det att visa ett felmeddelande och avslutas." +
                                             "Om värdena är giltiga skriver programmet ut på skärmen ditt BMI-värde och vilken kategori det tillhör, följt av ditt BMR-värde.\n\n" +
@@ -173,6 +173,9 @@
             int     age;
             string? gender;
 
+            // Clear console to start program
+            Console.Clear();
+            
             // Tells the user the function and usage of the program
             // Offer option to get help or to start program.
             Console.WriteLine("BMI och BMR beräknare program\n" +
@@ -186,7 +189,7 @@
             }
             else
             {
-                // Clear console to start program
+                // Clear console again
                 Console.Clear();
 
                 // These CustomTools methods are simple wrappers around Console.Read

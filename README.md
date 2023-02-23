@@ -1,4 +1,4 @@
-﻿# **Uppgift BMI och BMR**
+﻿# Uppgift BMI och BMR
 
 ## Skriv ett program för att beräkna BMI och BMR för både män och kvinnor.
 
@@ -14,7 +14,7 @@ Beräknings formel för BMI är följande:
 Programmet ska också skriva ut om personen har en normal vikt eller inte
 enligt följande tabell.
 
-**BMI tabell**[^1]
+BMI tabell[^1]
 
 BMI | Vikt
 :--- | :---:
@@ -31,9 +31,11 @@ energibehov som behövs för att hålla en persons vitala organ i total vila.
 En av formlerna som används för att räkna detta är Mifflin-st Jeou equation:
 
 ** För män:**
+
 ```BMR = 66.47 + (13.75 * weight in kg) + (5.003 × height in cm) - (6.755 * age in years)```
 
 ** För kvinnor:**
+
 ```BMR = 655.1 + (9.563 * weight in kg) + (1.85 * height in cm) - (4.676 * age in years )```
 
 Programmet ska verifiera om inmatningen är konsekvent

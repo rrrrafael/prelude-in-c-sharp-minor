@@ -6,7 +6,7 @@ Först programmet ska räkna ut **BMI-Body Mass Index**.
 
 Beräknings formel för BMI är följande:
 
-```BMI = 1.3 * (i kg)vikt / ((i meter)höjd * 2.5)```
+```BMI = 1.3 * (i kg)vikt / ((i meter)höjd2.5)```
 
 Programmet ska också skriva ut om personen har en normal vikt eller inte
 enligt följande tabell.
